@@ -37,6 +37,17 @@ const { width } = Dimensions.get('window');
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Onboarding4'>;
 
+function BackArrow() {
+  return (
+    <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
+      <Path
+        d="M15.41 7.41L14 6L8 12L14 18L15.41 16.59L10.83 12L15.41 7.41Z"
+        fill="#1F5F4E"
+      />
+    </Svg>
+  );
+}
+
 function PaginationDots({ active, total }: { active: number; total: number }) {
   return (
     <View style={dotStyles.container}>
@@ -170,14 +181,21 @@ export default function Onboarding4Screen({ navigation }: Props) {
 
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.title}>Onboarding</Text>
+        <View style={styles.headerLeft}>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <BackArrow />
+          </TouchableOpacity>
+          <Text style={styles.title}>AI Coach Wynn</Text>
+        </View>
         <TouchableOpacity onPress={() => navigation.navigate('Login')}>
           <Text style={styles.skip}>Skip</Text>
         </TouchableOpacity>
       </View>
 
       {/* Subtitle */}
-      <Text style={styles.subtitle}>Your personal habit coach, powered by AI.</Text>
+      <Text style={styles.subtitle}>
+        Your personal habit coach, powered by AI.{'\n'}Wynn helps you stay on track with smart recommendations.
+      </Text>
 
       {/* Full-screen blur overlay on white background */}
       <BlurView
@@ -255,8 +273,16 @@ const styles = StyleSheet.create({
     paddingTop: 60,
     marginBottom: 8,
   },
+  headerLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  backButton: {
+    padding: 4,
+  },
   title: {
-    fontSize: 36,
+    fontSize: 28,
     fontWeight: '700',
     color: '#333333',
     fontFamily: 'Montserrat_700Bold',

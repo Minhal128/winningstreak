@@ -64,7 +64,7 @@ export default function Onboarding1Screen({ navigation }: Props) {
 
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.title}>Onboarding</Text>
+        <Text style={styles.title}>Welcome</Text>
         <TouchableOpacity onPress={() => navigation.navigate('Login')}>
           <Text style={styles.skip}>Skip</Text>
         </TouchableOpacity>
@@ -72,7 +72,7 @@ export default function Onboarding1Screen({ navigation }: Props) {
 
       {/* Subtitle */}
       <Text style={styles.subtitle}>
-        Lorem ipsum dolor sit amet consectetur.{'\n'}Arcu tellus sed sed vel rutrum tincidunt.
+        Welcome to Winning Streak!{'\n'}The smartest way to build and maintain life-changing habits with AI assistance.
       </Text>
 
       {/* Card Image */}
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     paddingHorizontal: 20,
     marginBottom: 16,
-  }, 
+  },
   cardContainer: {
     alignItems: 'center',
     paddingHorizontal: 10,

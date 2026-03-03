@@ -235,7 +235,7 @@ const styles = StyleSheet.create({
     borderRadius: 21,
     fontSize: 28,
     fontWeight: '700',
-    color: '#333333',
+    color: '#000000',
     fontFamily: 'DMSans_700Bold',
   },
   otpBoxEmpty: {

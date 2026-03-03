@@ -9,6 +9,7 @@ import {
   Dimensions,
 } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import Svg, { Path } from 'react-native-svg';
 import { LinearGradient } from 'expo-linear-gradient';
 import { RootStackParamList } from '../../App';
 import WaveBackground from '../components/WaveBackground';
@@ -16,6 +17,17 @@ import WaveBackground from '../components/WaveBackground';
 const { width } = Dimensions.get('window');
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Onboarding5'>;
+
+function BackArrow() {
+  return (
+    <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
+      <Path
+        d="M15.41 7.41L14 6L8 12L14 18L15.41 16.59L10.83 12L15.41 7.41Z"
+        fill="#1F5F4E"
+      />
+    </Svg>
+  );
+}
 
 function PaginationDots({ active, total }: { active: number; total: number }) {
   return (
@@ -64,14 +76,21 @@ export default function Onboarding5Screen({ navigation }: Props) {
 
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.title}>Onboarding</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-          <Text style={styles.skip}>Skip</Text>
+        <View style={styles.headerLeft}>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <BackArrow />
+          </TouchableOpacity>
+          <Text style={styles.title}>You're Ready!</Text>
+        </View>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Text style={styles.skip}>Finish</Text>
         </TouchableOpacity>
       </View>
 
       {/* Subtitle */}
-      <Text style={styles.subtitle}>Your personal habit coach, powered by AI.</Text>
+      <Text style={styles.subtitle}>
+        Start your first streak today and transform your habits with Winning Streak.
+      </Text>
 
       {/* Card Image - reuse boarding4 for summary/stats view */}
       <View style={styles.cardContainer}>
@@ -92,7 +111,7 @@ export default function Onboarding5Screen({ navigation }: Props) {
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           activeOpacity={0.8}
-          onPress={() => navigation.navigate('Login')}
+          onPress={() => navigation.navigate('Home')}
         >
           <LinearGradient
             colors={['#88BA83', '#1A5540']}
@@ -121,8 +140,16 @@ const styles = StyleSheet.create({
     paddingTop: 60,
     marginBottom: 8,
   },
+  headerLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  backButton: {
+    padding: 4,
+  },
   title: {
-    fontSize: 36,
+    fontSize: 28,
     fontWeight: '700',
     color: '#333333',
     fontFamily: 'Montserrat_700Bold',

@@ -87,7 +87,7 @@ export default function ANISHKFFSignInv2Component({ navigation }: Props) {
               <TextInput
                 style={styles.input}
                 placeholder="Enter email, username, or phone"
-                placeholderTextColor="#999999"
+                placeholderTextColor="#666666"
                 value={email}
                 onChangeText={setEmail}
                 autoCapitalize="none"
@@ -100,7 +100,7 @@ export default function ANISHKFFSignInv2Component({ navigation }: Props) {
               <TextInput
                 style={[styles.input, { paddingRight: 50 }]}
                 placeholder="Enter Password"
-                placeholderTextColor="#999999"
+                placeholderTextColor="#666666"
                 value={password}
                 onChangeText={setPassword}
                 secureTextEntry={!showPassword}
@@ -120,7 +120,11 @@ export default function ANISHKFFSignInv2Component({ navigation }: Props) {
             </TouchableOpacity>
 
             {/* Login Button */}
-            <TouchableOpacity activeOpacity={0.8} style={styles.loginButtonWrapper}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={styles.loginButtonWrapper}
+              onPress={() => navigation.navigate('Onboarding1')}
+            >
               <LinearGradient
                 colors={['#88BA83', '#1A5540']}
                 start={{ x: 0, y: 0.5 }}
@@ -193,7 +197,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     paddingHorizontal: 20,
     fontSize: 15,
-    color: '#333333',
+    color: '#000000',
     fontFamily: 'Poppins_400Regular',
     borderWidth: 1,
     borderColor: 'rgba(255,255,255,0.33)',

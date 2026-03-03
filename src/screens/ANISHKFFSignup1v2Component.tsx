@@ -179,7 +179,7 @@ export default function ANISHKFFSignup1v2Component({ navigation }: Props) {
             <TextInput
               style={styles.phoneInput}
               placeholder="Phone number"
-              placeholderTextColor="#999999"
+              placeholderTextColor="#666666"
               value={phone}
               onChangeText={setPhone}
               keyboardType="phone-pad"
@@ -290,7 +290,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     paddingHorizontal: 14,
     fontSize: 15,
-    color: '#333333',
+    color: '#000000',
     fontFamily: 'Poppins_400Regular',
   },
   continueButtonWrapper: {

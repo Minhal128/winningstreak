@@ -122,7 +122,7 @@ export default function ANISHKFFSignup6v2Component({ navigation }: Props) {
             <TextInput
               style={styles.input}
               placeholder=""
-              placeholderTextColor="#999999"
+              placeholderTextColor="#666666"
               value={password}
               onChangeText={setPassword}
               secureTextEntry
@@ -146,7 +146,7 @@ export default function ANISHKFFSignup6v2Component({ navigation }: Props) {
             <TextInput
               style={styles.input}
               placeholder=""
-              placeholderTextColor="#999999"
+              placeholderTextColor="#666666"
               value={repeatPassword}
               onChangeText={setRepeatPassword}
               secureTextEntry
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     paddingHorizontal: 20,
     fontSize: 15,
-    color: '#333333',
+    color: '#000000',
     fontFamily: 'Poppins_400Regular',
     borderWidth: 1,
     borderColor: 'rgba(255,255,255,0.33)',

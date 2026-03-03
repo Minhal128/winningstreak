@@ -9,6 +9,7 @@ import {
   Dimensions,
 } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import Svg, { Path } from 'react-native-svg';
 import { LinearGradient } from 'expo-linear-gradient';
 import { RootStackParamList } from '../../App';
 import WaveBackground from '../components/WaveBackground';
@@ -16,6 +17,17 @@ import WaveBackground from '../components/WaveBackground';
 const { width } = Dimensions.get('window');
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Onboarding3'>;
+
+function BackArrow() {
+  return (
+    <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
+      <Path
+        d="M15.41 7.41L14 6L8 12L14 18L15.41 16.59L10.83 12L15.41 7.41Z"
+        fill="#1F5F4E"
+      />
+    </Svg>
+  );
+}
 
 function PaginationDots({ active, total }: { active: number; total: number }) {
   return (
@@ -64,14 +76,36 @@ export default function Onboarding3Screen({ navigation }: Props) {
 
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.title}>Onboarding</Text>
+        <View style={styles.headerLeft}>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <BackArrow />
+          </TouchableOpacity>
+          <Text style={styles.title}>Stay Consistent</Text>
+        </View>
         <TouchableOpacity onPress={() => navigation.navigate('Login')}>
           <Text style={styles.skip}>Skip</Text>
         </TouchableOpacity>
       </View>
 
       {/* Subtitle */}
-      <Text style={styles.subtitle}>An Encouraging Community Awaits!</Text>
+      <Text style={styles.subtitle}>
+        An encouraging community awaits!{'\n'}Join thousands of users who are winning every single day.
+      </Text>
+
+      {/* Make a Streak Button */}
+      <TouchableOpacity
+        style={styles.streakButton}
+        onPress={() => navigation.navigate('Home')}
+      >
+        <LinearGradient
+          colors={['#FFC727', '#E5A500']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          style={styles.streakGradient}
+        >
+          <Text style={styles.streakButtonText}>Create Your First Streak</Text>
+        </LinearGradient>
+      </TouchableOpacity>
 
       {/* Card Image */}
       <View style={styles.cardContainer}>
@@ -113,16 +147,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFFFFF',
   },
-  header: {
+  headerLeft: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingTop: 60,
-    marginBottom: 8,
+    gap: 8,
+  },
+  backButton: {
+    padding: 4,
   },
   title: {
-    fontSize: 36,
+    fontSize: 28,
     fontWeight: '700',
     color: '#333333',
     fontFamily: 'Montserrat_700Bold',
@@ -136,11 +170,32 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 14,
     color: '#333333',
-    fontFamily: 'Poppins_600SemiBold',
-    fontWeight: '600',
+    fontFamily: 'Poppins_400Regular',
     lineHeight: 22,
     paddingHorizontal: 20,
-    marginBottom: 16,
+    marginBottom: 8,
+  },
+  streakButton: {
+    marginHorizontal: 20,
+    marginTop: 10,
+    borderRadius: 12,
+    overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  streakGradient: {
+    paddingVertical: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  streakButtonText: {
+    color: '#1F5F4E',
+    fontSize: 15,
+    fontWeight: '700',
+    fontFamily: 'Poppins_700Bold',
   },
   cardContainer: {
     alignItems: 'center',
